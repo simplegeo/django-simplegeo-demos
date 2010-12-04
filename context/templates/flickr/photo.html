@@ -1,1 +1,36 @@
-<h1>{{ photo.title }}</h1>
+<html>
+<head>
+  <title>{{ photo.title }}</title>
+</head>
+<body>
+<!--
+http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}.jpg
+    or
+http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
+-->
+<div id="photo">
+    <h1><span class="title">{{ photo.title }}</span> by <span class="owner">{{ photo.owner }}</span></h1>
+    <img src="http://farm{{ photo.farm }}.static.flickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_z.jpg" alt="{{ photo.title }}" />
+</div>
+<div id="tags">
+<h2>Tags</h2>
+{% if photo.tags %}
+<ul>
+{% for t in photo.tags.all %}
+    <li>{{ t.tag }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</div>
+<div id="features">
+<h2>Features</h2>
+{% if photo.features %}
+<ul>
+{% for f in photo.features.all %}
+    <li>{{ f.name }} ({{ f.type.name }}, {{ f.category }})</li>
+{% endfor %}
+</ul>
+{% endif %}
+</div>
+</body>
+</html>

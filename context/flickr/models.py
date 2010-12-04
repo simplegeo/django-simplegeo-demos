@@ -5,6 +5,7 @@ class Photo(models.Model):
     title = models.CharField(max_length=255)
     longitude = models.FloatField()
     latitude = models.FloatField()
+    owner = models.CharField(max_length=200)
     farm = models.PositiveIntegerField()
     secret = models.CharField(max_length=50)
     server = models.PositiveIntegerField()

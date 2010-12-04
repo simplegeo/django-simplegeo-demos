@@ -30,7 +30,7 @@ class Command(BaseCommand):
         optparse.make_option('--limit',
             action='store',
             dest='limit',
-            default=False,
+            default=500,
             help='Number of photos to load'),
         )
 
@@ -84,16 +84,11 @@ class Command(BaseCommand):
             settings.SIMPLEGEO_SECRET, api_version='1.0', 
             host='ec2-204-236-155-13.us-west-1.compute.amazonaws.com')
 
-        if options['limit']:
-            limit = int(options['limit'])
-        else:
-            limit = 500
-
-        print "Loading about %s photos with API key %s ... " % (limit,
-            settings.FLICKR_API_KEY)
+        print "Loading about %s photos with API key %s ... " % (
+            options['limit'], settings.FLICKR_API_KEY)
 
         processed = 0
-        while processed < limit:
+        while processed < options['limit']:
             processed += self.get_photos()
 
         print "Loaded %s photos in all." % processed
@@ -141,6 +136,7 @@ class Command(BaseCommand):
 
         p = Photo()
         p.id = photo['id']
+        p.owner = photo['owner']
         p.title = photo['title']
         p.latitude = photo['latitude']
         p.longitude = photo['longitude']
