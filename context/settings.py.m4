@@ -107,4 +107,9 @@ LOGIN_URL = '/user/login/'
 # Our session's cookie name
 SESSION_COOKIE_NAME = 'context'
 
+# Your Flickr API key
 FLICKR_API_KEY = '__FLICKR_API_KEY__'
+
+# Your SimpleGeo OAuth token/secret
+SIMPLEGEO_KEY = '__SIMPLEGEO_TOKEN__'
+SIMPLEGEO_SECRET = '__SIMPLEGEO_SECRET__'

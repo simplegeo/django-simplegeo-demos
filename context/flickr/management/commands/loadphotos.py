@@ -8,6 +8,10 @@ import optparse
 import urllib
 import simplejson as json
 import time
+from simplegeo.context import ContextClient
+
+# Project imports
+from context.flickr.models import Photo, Tag, Category, Type, Feature
 
 class Command(BaseCommand):
     FLICKR_API = 'http://api.flickr.com/services/rest/'
@@ -76,10 +80,14 @@ class Command(BaseCommand):
     "stat": "ok"
 }
 """
+        self.context = ContextClient(settings.SIMPLEGEO_KEY,
+            settings.SIMPLEGEO_SECRET, api_version='1.0', 
+            host='ec2-204-236-155-13.us-west-1.compute.amazonaws.com')
+
         if options['limit']:
             limit = int(options['limit'])
         else:
-            limit = 100
+            limit = 500
 
         print "Loading about %s photos with API key %s ... " % (limit,
             settings.FLICKR_API_KEY)
@@ -105,19 +113,73 @@ class Command(BaseCommand):
                     try:
                         self.save_photo(photo)
                         saved += 1
-                    except:
-                        pass
-
-                if 'interval' in data['photos'] and \
-                    data['photos']['interval'] > 0:
-                    sleep = int(data['photos']['interval'])
-                else:
-                    sleep = 60
-
-                print "Sleeping for %s seconds ..." % sleep
-                time.sleep(sleep)
+                    except Exception, e:
+                        print "ERROR: %s" % str(e)
 
                 return saved
 
     def save_photo(self, photo):
-        print photo['id']
+        try:
+            photo = Photo.objects.get(id=photo['id'])
+            return
+        except:
+            pass
+
+        context = self.context.get_context(photo['latitude'],
+            photo['longitude'])
+
+        tags = []
+        for tag in photo['tags'].split(' '):
+            try:
+                t = Tag.objects.get(tag=tag)
+            except Tag.DoesNotExist:
+                t = Tag()
+                t.tag = tag
+                t.save()
+
+            tags.append(t)
+
+        p = Photo()
+        p.id = photo['id']
+        p.title = photo['title']
+        p.latitude = photo['latitude']
+        p.longitude = photo['longitude']
+        p.farm = photo['farm']
+        p.secret = photo['secret']
+        p.server = photo['server']
+        p.metro_score = int(context['demographics']['metro_score'])
+        p.tags = tags
+
+        print p.id
+        features = []
+        for feature in context['features']:
+            try:
+                category = Category.objects.get(name=feature['category'])
+            except Category.DoesNotExist:
+                category = Category()
+                category.name = feature['category']
+                category.save()
+
+            try:
+                type = Type.objects.get(name=feature['type'])
+            except Type.DoesNotExist:
+                type = Type()
+                type.name = feature['type']
+                type.save()
+
+            try:
+                f = Feature.objects.get(handle=feature['handle'])
+            except Feature.DoesNotExist:
+                f = Feature()
+                f.handle = feature['handle']
+                f.name = feature['name']
+                f.type = type
+                f.category = category 
+                f.save()
+
+            print "+-> %s (%s, %s)" % (f.name, f.category, f.type)
+
+            features.append(f)
+
+        p.features = features
+        p.save()
