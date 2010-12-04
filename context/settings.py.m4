@@ -10,7 +10,6 @@ ADMINS = (
 
 # Set up our paths
 SITE_ROOT = os.path.dirname(os.path.realpath(`__file__'))
-sys.path.append("%s%sapps" % (SITE_ROOT, os.sep))
 sys.path.append("%s%ssite-packages" % (SITE_ROOT, os.sep))
 
 MANAGERS = ADMINS

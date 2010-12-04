@@ -16,7 +16,8 @@ class Command(BaseCommand):
         'format': 'json',
         'extras': 'date_taken,owner_name,icon_server,geo,tags,views,media',
         'method': 'flickr.panda.getPhotos',
-        'per_page': 100
+        'per_page': 100,
+        'nojsoncallback': 1
     }
 
     args = ''
@@ -95,7 +96,7 @@ class Command(BaseCommand):
         url = '%s?%s' % (self.FLICKR_API, urllib.urlencode(self.ARGS))
         resp, content = http.request(url, "GET")
         if resp['status'] == '200':
-            data = json.loads(content[14:-1])
+            data = json.loads(content)
             if data['stat'] != 'ok':
                 return 0
             else:
