@@ -1,0 +1,16 @@
+`#' __file__
+divert(`-1')
+define(`__DEBUG__', `True')
+define(`__DATABASE_USER__', `""')
+define(`__DATABASE_PASSWORD__', `')
+define(`__DATABASE_HOST__', `')
+define(`__DATABASE_PORT__', `')
+define(`__DATABASE_ENGINE__', `sqlite3')
+define(`__DATABASE_NAME__', `"%s%scontext.sqlite3" % (SITE_ROOT, os.sep)')
+define(`__DEFAULT_FROM_EMAIL__', `')
+define(`__EMAIL_HOST_USER__', `')
+define(`__EMAIL_HOST_PASSWORD__', `')
+define(`__EMAIL_HOST__', `')
+define(`__EMAIL_PORT__', 25)
+sinclude(`overrides.m4')
+divert`'dnl
