@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>Photo Results</title>
+</head>
+<body>
+<ul>
+{% for photo in photos %}
+    <li><a href="/photos/{{ photo.id }}.html">{{ photo.title }}</a></li>
+{% endfor %}
+</ul>
+</body>
+</html>
