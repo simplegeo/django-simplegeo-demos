@@ -1,0 +1,15 @@
+# Overview
+
+This is a simple Django application that will load up a number of geo-tagged Flickr photos from the Wang Wang Panda API. It then rungs all of those photos through the SimpleGeo Context API, which allows us to further tag the data with relevant geographic information. The photos are then presented in a simple, searchable interface.
+
+# Setup
+
+1. Edit `m4/base.m4` and add your Flickr API key.
+2. `cd ./context`
+3. `make`
+
+# Loading Photos
+
+From the `context` directory run the following Django command:
+
+    ./manage.py loadphotos --limit 500
