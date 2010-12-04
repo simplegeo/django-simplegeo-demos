@@ -107,3 +107,5 @@ LOGIN_URL = '/user/login/'
 
 # Our session's cookie name
 SESSION_COOKIE_NAME = 'context'
+
+FLICKR_API_KEY = '__FLICKR_API_KEY__'

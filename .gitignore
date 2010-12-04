@@ -2,3 +2,4 @@
 *.swp
 *.sqlite3
 settings.py
+overrides.m4

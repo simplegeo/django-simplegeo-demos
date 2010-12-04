@@ -12,5 +12,6 @@ define(`__EMAIL_HOST_USER__', `')
 define(`__EMAIL_HOST_PASSWORD__', `')
 define(`__EMAIL_HOST__', `')
 define(`__EMAIL_PORT__', 25)
+define(`__FLICKR_API_KEY__', `')
 sinclude(`overrides.m4')
 divert`'dnl
