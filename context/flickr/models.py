@@ -14,7 +14,10 @@ class Photo(models.Model):
     metro_score = models.PositiveIntegerField()
 
     def __unicode__(self):
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)
 
 class Tag(models.Model):
     tag = models.CharField(max_length=100, db_index=True)
@@ -43,7 +46,7 @@ class Type(models.Model):
 class Feature(models.Model):
     handle = models.CharField(max_length=100, primary_key=True)
     name = models.CharField(max_length=255)
-    type = models.ForeignKey('Type')
+    type = models.ForeignKey('Type', related_name='features')
     category = models.ForeignKey('Category')
 
     def __unicode__(self):

@@ -1,0 +1,6 @@
+<h1>{{ category }}</h1>
+<ul>
+{% for f in features %}
+    <li><a href="/photos/features/{{ f.handle }}.html">{{ f.name }}</a> (<a href="/photos/types/{{ f.type.id }}.html">{{ f.type }}</a>)</li>
+{% endfor %}
+</ul>

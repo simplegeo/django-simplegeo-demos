@@ -3,9 +3,12 @@
     <title>Photo Results</title>
 </head>
 <body>
+{% if feature %}
+<h1>{{ feature }}</h1>
+{% endif %}
 <ul>
 {% for photo in photos %}
-    <li><a href="/photos/{{ photo.id }}.html">{{ photo.title }}</a></li>
+    <li><a href="/photos/{{ photo.id }}.html">{{ photo }}</a></li>
 {% endfor %}
 </ul>
 </body>
