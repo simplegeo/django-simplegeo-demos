@@ -6,11 +6,9 @@ This is a simple Django application that will load up a number of geo-tagged Fli
 
 1. Change into the `context` directory.
 2. Create `overrides.m4` in the `context` directory and add the following variables to it:
-
     define(`__FLICKR_API_KEY__', `YOUR_FLICKR_API_KEY_HERE')
     define(`__SIMPLEGEO_TOKEN__', `YOUR_SIMPLEGEO_OAUTH_TOKEN_HERE')
     define(`__SIMPLEGEO_SECRET__', `YOUR_SIMPLEGEO_OAUTH_SECRET_HERE')
-
 3. Run `make`.
 
 # Loading Photos
