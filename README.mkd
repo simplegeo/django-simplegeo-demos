@@ -12,9 +12,21 @@ This is a simple Django application that will load up a number of geo-tagged Fli
         define(`__SIMPLEGEO_SECRET__', `YOUR_SIMPLEGEO_OAUTH_SECRET_HERE')
 
 3. Run `make`.
+4. Run `./manage.py syncdb` and follow the instructions.
+5. Load some photos.
+6. Run `./manage.py runserver 127.0.0.1:8888`.
+7. Point your browser to `http://127.0.0.1:8888/photos/categories.html` (See Browsing).
 
 # Loading Photos
 
 From the `context` directory run the following Django command:
 
     ./manage.py loadphotos --limit 500
+
+# Browsing
+
+* Go to `/photos/types.html` to view features by type.
+* Go to `/photos/categories.html` to view features by category.
+* Go to `/photos/metro_score/[0-10].html` to view photos by population density scores (0 = no data, 10 = heavily populated).
+
+Once you drill down to a specific feature you'll se a list of photos. Click on a photo and it will show all of the geographic features that the photo was taken within.

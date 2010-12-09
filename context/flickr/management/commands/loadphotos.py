@@ -81,28 +81,32 @@ class Command(BaseCommand):
 }
 """
         self.context = ContextClient(settings.SIMPLEGEO_KEY,
-            settings.SIMPLEGEO_SECRET, api_version='1.0', 
-            host='ec2-204-236-155-13.us-west-1.compute.amazonaws.com')
+            settings.SIMPLEGEO_SECRET)
 
         print "Loading about %s photos with API key %s ... " % (
             options['limit'], settings.FLICKR_API_KEY)
 
         processed = 0
         while processed < options['limit']:
-            processed += self.get_photos()
+            try:
+                processed += self.get_photos()
+            except Exception, e:
+                "ERROR: %s" % str(e)
 
         print "Loaded %s photos in all." % processed
 
     def get_photos(self):
-        http = httplib2.Http()
+        http = httplib2.Http(timeout=3)
         self.ARGS['api_key'] = settings.FLICKR_API_KEY
         url = '%s?%s' % (self.FLICKR_API, urllib.urlencode(self.ARGS))
+
         resp, content = http.request(url, "GET")
         if resp['status'] == '200':
             data = json.loads(content)
             if data['stat'] != 'ok':
                 return 0
             else:
+                print "Running %s photos through SimpleGeo Context ..." % len(data['photos']['photo'])
                 saved = 0
                 for photo in data['photos']['photo']:
                     try:
@@ -143,7 +147,13 @@ class Command(BaseCommand):
         p.farm = photo['farm']
         p.secret = photo['secret']
         p.server = photo['server']
-        p.metro_score = int(context['demographics']['metro_score'])
+
+        try:
+            p.metro_score = int(context['demographics']['metro_score'])
+        except:
+            p.metro_score = 0
+
+        p.save()
         p.tags = tags
 
         print p.id
@@ -178,4 +188,3 @@ class Command(BaseCommand):
             features.append(f)
 
         p.features = features
-        p.save()
