@@ -1,5 +1,5 @@
 # Django imports
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
 
 # Python imports
@@ -7,7 +7,6 @@ import httplib2
 import optparse
 import urllib
 import simplejson as json
-import time
 from simplegeo.context import ContextClient
 
 # Project imports
