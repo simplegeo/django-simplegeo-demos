@@ -160,17 +160,17 @@ class Command(BaseCommand):
         features = []
         for feature in context['features']:
             try:
-                category = Category.objects.get(name=feature['category'])
+                category = Category.objects.get(name=feature['classifiers'][0]['category'])
             except Category.DoesNotExist:
                 category = Category()
-                category.name = feature['category']
+                category.name = feature['classifiers'][0]['category']
                 category.save()
 
             try:
-                type = Type.objects.get(name=feature['type'])
+                type = Type.objects.get(name=feature['classifiers'][0]['type'])
             except Type.DoesNotExist:
                 type = Type()
-                type.name = feature['type']
+                type.name = feature['classifiers'][0]['type']
                 type.save()
 
             try:
