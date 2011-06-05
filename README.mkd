@@ -4,7 +4,12 @@ This is a simple Django application that will load up a number of geo-tagged Fli
 
 # Setup
 
-1. Make sure all of the Python packages in requirements.txt are installed (try pip install -r requirements.txt in a Python virtual environment).
+1. Make sure all of the Python packages in requirements.txt are installed.
+
+        virtualenv --no-site-packages .
+        . bin/activate
+        pip install -r requirements.txt
+
 2. Change into the `context` directory.
 3. Create `overrides.m4` in the `context` directory and add the following variables to it:
 
