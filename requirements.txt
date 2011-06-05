@@ -1,0 +1,5 @@
+django
+httplib2
+simplejson
+oauth2
+jsonutil

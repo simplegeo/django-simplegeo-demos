@@ -4,18 +4,19 @@ This is a simple Django application that will load up a number of geo-tagged Fli
 
 # Setup
 
-1. Change into the `context` directory.
-2. Create `overrides.m4` in the `context` directory and add the following variables to it:
+1. Make sure all of the Python packages in requirements.txt are installed (try pip install -r requirements.txt in a Python virtual environment).
+2. Change into the `context` directory.
+3. Create `overrides.m4` in the `context` directory and add the following variables to it:
 
         define(`__FLICKR_API_KEY__', `YOUR_FLICKR_API_KEY_HERE')
         define(`__SIMPLEGEO_TOKEN__', `YOUR_SIMPLEGEO_OAUTH_TOKEN_HERE')
         define(`__SIMPLEGEO_SECRET__', `YOUR_SIMPLEGEO_OAUTH_SECRET_HERE')
 
-3. Run `make`.
-4. Run `./manage.py syncdb` and follow the instructions.
-5. Load some photos.
-6. Run `./manage.py runserver 127.0.0.1:8888`.
-7. Point your browser to `http://127.0.0.1:8888/photos/categories.html` (See Browsing).
+4. Run `make`.
+5. Run `./manage.py syncdb` and follow the instructions.
+6. Load some photos.
+7. Run `./manage.py runserver 127.0.0.1:8888`.
+8. Point your browser to `http://127.0.0.1:8888/photos/categories.html` (See Browsing).
 
 # Loading Photos
 
