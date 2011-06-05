@@ -7,7 +7,7 @@ import httplib2
 import optparse
 import urllib
 import simplejson as json
-from simplegeo.context import ContextClient
+from simplegeo import Client as SimpleGeoClient
 
 # Project imports
 from context.flickr.models import Photo, Tag, Category, Type, Feature
@@ -79,7 +79,7 @@ class Command(BaseCommand):
     "stat": "ok"
 }
 """
-        self.context = ContextClient(settings.SIMPLEGEO_KEY,
+        self.simplegeo = SimpleGeoClient(settings.SIMPLEGEO_KEY,
             settings.SIMPLEGEO_SECRET)
 
         print "Loading about %s photos with API key %s ... " % (
@@ -123,7 +123,7 @@ class Command(BaseCommand):
         except:
             pass
 
-        context = self.context.get_context(photo['latitude'],
+        context = self.simplegeo.context.get_context(photo['latitude'],
             photo['longitude'])
 
         tags = []

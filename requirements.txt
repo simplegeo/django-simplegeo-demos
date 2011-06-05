@@ -3,3 +3,4 @@ httplib2
 simplejson
 oauth2
 jsonutil
+simplegeo

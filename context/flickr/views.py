@@ -15,7 +15,7 @@ def metro_score(request, score):
     return render_to_response('flickr/results.html', {
         'photos': Photo.objects.filter(metro_score=score)
     })
-   
+
 def types(request):
     return render_to_response('flickr/types.html', {
         'types': Type.objects.all().order_by('name')
@@ -46,7 +46,7 @@ def features(request, handle):
         'feature': feature,
         'photos': Photo.objects.filter(features=feature)
     })
-   
+
 
 def debug(request):
     unknown = Category.objects.get(name='')
