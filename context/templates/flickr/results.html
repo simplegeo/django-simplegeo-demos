@@ -1,15 +1,7 @@
-<html>
-<head>
-    <title>Photo Results</title>
-</head>
-<body>
-{% if feature %}
-<h1>{{ feature }}</h1>
-{% endif %}
-<ul>
+{% extends "library/layouts/flickr.html" %}
+{% block page_subheader %}Photos in {{ feature }}{% endblock %}
+{% block content %}
 {% for photo in photos %}
-    <li><a href="/photos/{{ photo.id }}.html">{{ photo }}</a></li>
+  <a href="/photos/{{ photo.id }}.html"><img src="{{ photo.srcurl }}" alt="{{ photo.title }}"</a>
 {% endfor %}
-</ul>
-</body>
-</html>
+{% endblock %}

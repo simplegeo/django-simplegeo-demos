@@ -1,5 +1,9 @@
+{% extends "library/layouts/flickr.html" %}
+{% block page_subheader %}By polygon type{% endblock %}
+{% block content %}
 <ul>
 {% for type in types %}
-    <li><a href="/photos/types/{{ type.id }}.html">{{ type }}</a></li>
+  <li><a href="/photos/types/{{ type.id }}.html">{{ type }}</a></li>
 {% endfor %}
 </ul>
+{% endblock %}

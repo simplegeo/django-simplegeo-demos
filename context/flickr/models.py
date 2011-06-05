@@ -19,6 +19,11 @@ class Photo(models.Model):
         else:
             return str(self.id)
 
+    @property
+    def srcurl(self):
+        return "http://farm%s.static.flickr.com/%s/%s_%s_z.jpg" % (self.farm,
+            self.server, self.id, self.secret)
+
 class Tag(models.Model):
     tag = models.CharField(max_length=100, db_index=True)
 

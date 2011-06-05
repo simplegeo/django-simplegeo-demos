@@ -1,5 +1,7 @@
-<ul>
+{% extends "library/layouts/flickr.html" %}
+{% block page_subheader %}By polygon category{% endblock %}
+{% block content %}
 {% for c in categories %}
-    <li><a href="/photos/category/{{ c.id }}.html">{{ c }}</a></li>
+  <li><a href="/photos/category/{{ c.id }}.html">{{ c }}</a></li>
 {% endfor %}
-</ul>
+{% endblock %}

@@ -1,30 +1,25 @@
-<html>
-<head>
-  <title>{{ photo.title }}</title>
-</head>
-<body>
+{% extends "library/layouts/flickr.html" %}
+{% block page_subheader %}{{ photo.title }} by {{ photo.owner }}{% endblock %}
+{% block content %}
 <div id="photo">
-    <h1><span class="title">{{ photo.title }}</span> by <span class="owner">{{ photo.owner }}</span></h1>
-    <img src="http://farm{{ photo.farm }}.static.flickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_z.jpg" alt="{{ photo.title }}" />
-</div>
-
-<div id="tags">
-<h2>Tags</h2>
-<ul>
-{% for t in photo.tags.all %}
-    <li>{{ t.tag }}</li>
-{% endfor %}
-</ul>
+  <img src="{{ photo.srcurl }}" alt="{{ photo.title }}" />
 </div>
 
 <div id="features">
-<h2>Features</h2>
-<ul>
-{% for f in photo.features.all %}
-    <li>{{ f.name }} ({{ f.type.name }}, {{ f.category }})</li>
-{% endfor %}
-</ul>
+  <h4>SimpleGeo Polygons</h4>
+  <ul>
+    {% for f in photo.features.all %}
+    <li><a href="features/{{ f.handle }}.html">{{ f.name }}</a> (<a href="types/{{ f.type.id }}.html">{{ f.type.name }}</a>, <a href="category/{{ f.category.id }}.html">{{ f.category }}</a>)</li>
+    {% endfor %}
+  </ul>
 </div>
 
-</body>
-</html>
+<div id="tags">
+  <h4>Flickr tags</h4>
+  <ul>
+    {% for t in photo.tags.all %}
+    <li>{{ t.tag }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
