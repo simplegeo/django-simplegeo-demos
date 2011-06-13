@@ -1,8 +1,11 @@
 {% extends "library/layouts/flickr.html" %}
 {% block page_subheader %}{{ type }} polygons{% endblock %}
+{% block back %}
+<a href="/photos/types.html">Back to polygon types</a><br />
+{% endblock %}
 {% block content %}
 <ul>
-{% for f in features %}
+{% for f in paginator_page.object_list %}
     <li><a href="/photos/features/{{ f.handle }}.html">{{ f.name }}</a> (<a href="/photos/category/{{ f.category.id }}.html">{{ f.category }}</a>)</li>
 {% endfor %}
 </ul>
