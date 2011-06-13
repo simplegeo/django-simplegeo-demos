@@ -17,11 +17,11 @@
   <div>
     {% block back %}{% endblock %}
     {% block paginator_top %}
-      {% include "library/paginator.html" %}
+      {% include "library/paginator.html" %}<br />
     {% endblock %}
     {% block content %}{% endblock %}
     {% block paginator_bottom %}
-      {% include "library/paginator.html" %}
+      <br />{% include "library/paginator.html" %}
     {% endblock %}
   </div>
 
