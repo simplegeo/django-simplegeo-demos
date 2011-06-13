@@ -1,3 +1,5 @@
 {% if paginator_page %}
+  <p>
   {% if paginator_page.has_previous %}<a href="?page={{ paginator_page.previous_page_number }}"><-</a>{% endif %} Page {{ paginator_page.number }} of {{ paginator_page.paginator.num_pages }}{% if paginator_page.has_next %} <a href="?page={{ paginator_page.next_page_number }}">-></a>{% endif %}
+  </p>
 {% endif %}
