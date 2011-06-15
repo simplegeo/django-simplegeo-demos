@@ -3,8 +3,8 @@
   <title>{% block page_title %}SimpleGeo Demos{% endblock %}</title>
   <meta charset="utf-8">
   {% block meta_tags %}{% endblock %}
-  <link rel="stylesheet" href="https://simplegeo.com/static/CACHE/css/2d3382547989.css" type="text/css" />
-  <link rel="stylesheet" href="https://simplegeo.com/static/CACHE/css/9b1acba0ab03.css" type="text/css" />
+  <link rel="stylesheet" href="https://simplegeo.com/static/css/global.css" type="text/css" />
+  <link rel="stylesheet" href="https://simplegeo.com/static/css/marketing.css" type="text/css" />
   {% block page_css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -14,15 +14,19 @@
 
   <div class="wrapper content">
     <div class="wrapper-inner">
-        <div class="aside">
-            <div class="polygon blue-polygon"><span class="tlp"></span><span class="trp"></span><span class="blp"></span><span class="brp"></span><h3 class="jobs-title">We are currently looking for...</h3><ul class="job-toc"><li><a href="#job_20110427172128_QR6EZVVKVCE4ZCMI">Developer Advocate</a></li><li><a href="#job_20110427173336_YU6QAJQLBWSSDENP">Senior Manager, Sales &amp; Business Development</a></li></ul></div>
-            <div class="polygon" style="border-top:0 none"><span class="tlp"></span><span class="trp"></span><span class="blp"></span><span class="brp"></span><h5 class="dont-see">Don't See your job here?</h5><p>If you really want to join SimpleGeo and don't see your expertise in our job list, <br><a href="http://simplegeo.theresumator.com/apply/5hCQUl/General-Application.html">send in your information anyway</a>. We love talented people.</p></div>
-        </div>
-        <div class="left-col">
-            <h2 class="jobs">Jobs</h2>
+            <h2 class="demos">Demos</h2>
             <div class="article">
-                <div class="article-head-thin"><span class="tlp"></span><span class="trp"></span><span class="blp"></span><span class="brp"></span></div><div class="shadow"><div class="section">
+                <div class="article-head-thin">
+                    <span class="tlp"></span>
+                    <span class="trp"></span>
+                    <span class="blp"></span>
+                    <span class="brp"></span>
+                </div>
+                <div class="shadow">
+                    <div class="section">
 
+  <!-- BEN -->
+  
   <h1>{% block page_header %}{% endblock %}</h1>
   <h3>{% block page_subheader %}{% endblock %}</h3>
 
@@ -37,10 +41,11 @@
     {% endblock %}
   </div>
 
+  <!-- /BEN -->
+
   {% block footer %}
     {% include "library/footer.html" %}
   {% endblock %}
-  <!--script src="/static/js/lib/jquery.json-2.2.min.js" type="text/javascript" charset="utf-8"></script-->
   {% block page_js %}{% endblock %}
 </body>
 </html>

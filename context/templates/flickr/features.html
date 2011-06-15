@@ -1,7 +1,9 @@
 {% extends "library/layouts/flickr.html" %}
 {% block page_subheader %}Photos in {{ feature }}{% endblock %}
 {% block content %}
+<ul>
 {% for photo in paginator_page.object_list %}
-  <a href="/photos/{{ photo.id }}.html"><img src="{{ photo.srcurl }}" alt="{{ photo.title }}"></a>
+    <li><a href="/photos/{{ photo.id }}.html"><img src="{{ photo.srcurl }}" alt="{{ photo.title }}"></a></li>
 {% endfor %}
+</ul>
 {% endblock %}
