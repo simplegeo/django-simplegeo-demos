@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Project imports
-from context.flickr.models import Photo, Tag, Category, Type, Feature
+from sgdemos.flickr.models import Photo, Tag, Category, Type, Feature
 
 
 def photo(request, id):

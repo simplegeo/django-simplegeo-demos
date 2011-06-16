@@ -10,7 +10,7 @@ import simplejson as json
 from simplegeo import Client as SimpleGeoClient
 
 # Project imports
-from context.flickr.models import Photo, Tag, Category, Type, Feature
+from sgdemos.flickr.models import Photo, Tag, Category, Type, Feature
 
 class Command(BaseCommand):
     FLICKR_API = 'http://api.flickr.com/services/rest/'

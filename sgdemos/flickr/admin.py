@@ -1,5 +1,5 @@
 from django.contrib import admin
-from context.flickr.models import Photo, Tag, Category, Type, Feature
+from sgdemos.flickr.models import Photo, Tag, Category, Type, Feature
 
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'longitude', 'latitude')

@@ -91,7 +91,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'context.flickr',
+    'sgdemos.flickr',
 )
 
 # Email settings
@@ -105,7 +105,7 @@ EMAIL_PORT              = __EMAIL_PORT__
 LOGIN_URL = '/user/login/'
 
 # Our session's cookie name
-SESSION_COOKIE_NAME = 'context'
+SESSION_COOKIE_NAME = 'sgdemos'
 
 # Your Flickr API key
 FLICKR_API_KEY = '__FLICKR_API_KEY__'
