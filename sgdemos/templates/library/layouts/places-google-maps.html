@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>{% block page_title %}SimpleGeo Demos{% endblock %}</title>
+  <meta charset="utf-8">
+  {% block meta_tags %}{% endblock %}
+  <link rel="stylesheet" href="https://simplegeo.com/static/css/global.css" type="text/css" />
+  <link rel="stylesheet" href="https://simplegeo.com/static/css/marketing.css" type="text/css" />
+  <style type="text/css" media="screen, mobile">
+    @import url('http://code.google.com/apis/maps/documentation/javascript/examples/default.css');
+    #map_canvas {width:100%;height:500px;margin:20px 0;display:block;position:static;}
+    #map_canvas h4, #map_canvas p {font: bold .95em "Helvetica", sans-serif;margin:0;padding:0;color:#000;}
+  </style>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script src="http://cdn.simplegeo.com/js/1.3/simplegeo.places.min.js"></script>
+  <script type="text/javascript" src="/static/main.js"></script>
+  {% block page_css %}{% endblock %}
+</head>
+<body onload="initialize()">
+  {% block header %}
+    {% include "library/header.html" %}
+  {% endblock %}
+
+    {% block content %}{% endblock %}
+
+  {% block footer %}
+    {% include "library/footer.html" %}
+  {% endblock %}
+  {% block page_js %}{% endblock %}
+</body>
+</html>
