@@ -1,29 +1,25 @@
-# ../m4/base.m4
-
-
-
 # Django settings for Wikileaks project.
 import django, os, sys
 
 DEBUG = True
-TEMPLATE_DEBUG = 'True'
+TEMPLATE_DEBUG = '__DEBUG__'
 
 ADMINS = (
     ('Joe Stump', 'joe@joestump.net')
 )
 
 # Set up our paths
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(`__file__'))
 sys.path.append("%s%ssite-packages" % (SITE_ROOT, os.sep))
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE     = 'sqlite3'
-DATABASE_NAME       = "%s%ssgdemos.sqlite3" % (SITE_ROOT, os.sep)
-DATABASE_USER       = '""'
-DATABASE_PASSWORD   = ''
-DATABASE_HOST       = ''
-DATABASE_PORT       = ''
+DATABASE_ENGINE     = '__DATABASE_ENGINE__'
+DATABASE_NAME       = __DATABASE_NAME__
+DATABASE_USER       = '__DATABASE_USER__'
+DATABASE_PASSWORD   = '__DATABASE_PASSWORD__'
+DATABASE_HOST       = '__DATABASE_HOST__'
+DATABASE_PORT       = '__DATABASE_PORT__'
 
 # PayPal email address
 PAYPAL_RECEIVER_EMAIL = "chunkyewok@yahoo.com"
@@ -47,7 +43,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = SITE_ROOT + '/templates/static/'
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -99,11 +95,11 @@ INSTALLED_APPS = (
 )
 
 # Email settings
-DEFAULT_FROM_EMAIL      = ''
-EMAIL_HOST_USER         = ''
-EMAIL_HOST_PASSWORD     = ''
-EMAIL_HOST              = ''
-EMAIL_PORT              = 25
+DEFAULT_FROM_EMAIL      = '__DEFAULT_FROM_EMAIL__'
+EMAIL_HOST_USER         = '__EMAIL_HOST_USER__'
+EMAIL_HOST_PASSWORD     = '__EMAIL_HOST_PASSWORD__'
+EMAIL_HOST              = '__EMAIL_HOST__'
+EMAIL_PORT              = __EMAIL_PORT__
 
 # Where to redirect logged out users
 LOGIN_URL = '/user/login/'
