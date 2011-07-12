@@ -17,7 +17,7 @@ class Command(BaseCommand):
     ARGS = {
         'panda_name': 'wang wang',
         'format': 'json',
-        'extras': 'date_taken,owner_name,icon_server,geo,tags,views,media',
+        'extras': 'date_taken,owner_name,icon_server,geo,tags,views,media,license',
         'method': 'flickr.panda.getPhotos',
         'per_page': 100,
         'nojsoncallback': 1
@@ -108,12 +108,12 @@ class Command(BaseCommand):
                 print "Running %s photos through SimpleGeo Context ..." % len(data['photos']['photo'])
                 saved = 0
                 for photo in data['photos']['photo']:
-                    try:
-                        self.save_photo(photo)
-                        saved += 1
-                    except Exception, e:
-                        print "ERROR: %s" % str(e)
-
+                    if photo['license'] != '0':
+                        try:
+                            self.save_photo(photo)
+                            saved += 1
+                        except Exception, e:
+                            print "ERROR: %s" % str(e)
                 return saved
 
     def save_photo(self, photo):
