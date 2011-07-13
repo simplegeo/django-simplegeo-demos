@@ -108,7 +108,7 @@ class Command(BaseCommand):
                 print "Running %s photos through SimpleGeo Context ..." % len(data['photos']['photo'])
                 saved = 0
                 for photo in data['photos']['photo']:
-                    if photo['license'] != '0':
+                    if photo['license'] in ['4', '5', '6', '7']:
                         try:
                             self.save_photo(photo)
                             saved += 1
@@ -144,6 +144,7 @@ class Command(BaseCommand):
         p.latitude = photo['latitude']
         p.longitude = photo['longitude']
         p.farm = photo['farm']
+        p.license = photo['license']
         p.secret = photo['secret']
         p.server = photo['server']
 
@@ -179,7 +180,7 @@ class Command(BaseCommand):
                 f.handle = feature['handle']
                 f.name = feature['name']
                 f.type = type
-                f.category = category 
+                f.category = category
                 f.save()
 
             print "+-> %s (%s, %s)" % (f.name, f.category, f.type)

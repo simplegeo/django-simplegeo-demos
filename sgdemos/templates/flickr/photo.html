@@ -1,8 +1,13 @@
 {% extends "library/layouts/flickr.html" %}
-{% block page_subheader %}{{ photo.title }} by {{ photo.owner }}{% endblock %}
+{% block page_subheader %}
+{{ photo.title }} by <a href="http://www.flickr.com/photos/{{ photo.owner }}" target="_blank">{{ photo.owner }}</a><br />
+License: <a href="{{ photo.license_url }}" target="_blank">{{ photo.license_text }}</a>
+{% endblock %}
 {% block content %}
 <div id="photo">
-  <img src="{{ photo.srcurl }}" alt="{{ photo.title }}" />
+  <a href="http://www.flickr.com/photos/{{ photo.owner }}/{{ photo.id}}" target="_blank">
+    <img src="{{ photo.srcurl }}" alt="{{ photo.title }}" />
+  </a>
 </div>
 
 <div id="features">
